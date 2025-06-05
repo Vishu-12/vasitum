@@ -1,4 +1,3 @@
-// Sidebar.jsx
 import React from "react";
 import {
   Box,
@@ -33,12 +32,11 @@ export default function Sidebar({ mobileOpen, onToggle }) {
   const drawerVariant = isMdUp ? "permanent" : "temporary";
   const drawerWidth = isMdUp ? drawerWidthFull : drawerWidthCollapsed;
 
-  // Notice how only the Dashboard entry has `iconColor` and `textColor` set to "#FF5151"
   const mainItems = [
     {
       label: "Dashboard",
       icon: <DashboardIcon sx={{ color: "#FF5151" }} />,
-      iconColor: "#FF5151", // used below for the text
+      iconColor: "#FF5151", 
     },
     {
       label: "Recruitment",
@@ -189,7 +187,6 @@ export default function Sidebar({ mobileOpen, onToggle }) {
                 {isMdUp && (
                   <ListItemText
                     primary={item.label}
-                    // If this is “Dashboard”, color its text red; otherwise default
                     primaryTypographyProps={{
                       sx: { color: item.iconColor || "inherit" },
                     }}

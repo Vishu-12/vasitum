@@ -1,4 +1,3 @@
-// Navbar.jsx
 import { useState } from "react";
 import {
   AppBar,
