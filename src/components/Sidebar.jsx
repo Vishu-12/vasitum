@@ -1,3 +1,5 @@
+// Sidebar.jsx
+import React from "react";
 import {
   Box,
   Drawer,
@@ -31,10 +33,12 @@ export default function Sidebar({ mobileOpen, onToggle }) {
   const drawerVariant = isMdUp ? "permanent" : "temporary";
   const drawerWidth = isMdUp ? drawerWidthFull : drawerWidthCollapsed;
 
+  // Notice how only the Dashboard entry has `iconColor` and `textColor` set to "#FF5151"
   const mainItems = [
     {
       label: "Dashboard",
-      icon: <DashboardIcon sx={{ color: "#0A337A" }} />,
+      icon: <DashboardIcon sx={{ color: "#FF5151" }} />,
+      iconColor: "#FF5151", // used below for the text
     },
     {
       label: "Recruitment",
@@ -46,6 +50,7 @@ export default function Sidebar({ mobileOpen, onToggle }) {
           sx={{ width: 24, height: 24 }}
         />
       ),
+      iconColor: null,
     },
     {
       label: "Schedule",
@@ -57,6 +62,7 @@ export default function Sidebar({ mobileOpen, onToggle }) {
           sx={{ width: 24, height: 24 }}
         />
       ),
+      iconColor: null,
     },
     {
       label: "Employee",
@@ -68,6 +74,7 @@ export default function Sidebar({ mobileOpen, onToggle }) {
           sx={{ width: 24, height: 24 }}
         />
       ),
+      iconColor: null,
     },
     {
       label: "Department",
@@ -79,6 +86,7 @@ export default function Sidebar({ mobileOpen, onToggle }) {
           sx={{ width: 24, height: 24 }}
         />
       ),
+      iconColor: null,
     },
   ];
 
@@ -93,6 +101,7 @@ export default function Sidebar({ mobileOpen, onToggle }) {
           sx={{ width: 24, height: 24 }}
         />
       ),
+      iconColor: null,
     },
     {
       label: "Settings",
@@ -104,6 +113,7 @@ export default function Sidebar({ mobileOpen, onToggle }) {
           sx={{ width: 24, height: 24 }}
         />
       ),
+      iconColor: null,
     },
   ];
 
@@ -130,7 +140,7 @@ export default function Sidebar({ mobileOpen, onToggle }) {
           },
         }}
       >
-        {/* Logo  */}
+        {/* Logo */}
         <Box
           sx={{
             display: "flex",
@@ -176,7 +186,15 @@ export default function Sidebar({ mobileOpen, onToggle }) {
             <ListItem key={idx} disablePadding>
               <ListItemButton sx={{ py: 1.5 }}>
                 <ListItemIcon>{item.icon}</ListItemIcon>
-                {isMdUp && <ListItemText primary={item.label} />}
+                {isMdUp && (
+                  <ListItemText
+                    primary={item.label}
+                    // If this is “Dashboard”, color its text red; otherwise default
+                    primaryTypographyProps={{
+                      sx: { color: item.iconColor || "inherit" },
+                    }}
+                  />
+                )}
               </ListItemButton>
             </ListItem>
           ))}

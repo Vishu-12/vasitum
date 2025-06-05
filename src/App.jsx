@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { useTheme } from "@mui/material";
 
 import Sidebar from "./components/Sidebar";
+import Navbar from "./components/Navbar";
 
 export default function App() {
   const theme = useTheme();
@@ -15,6 +16,7 @@ export default function App() {
   return (
     <Box sx={{ display: "flex" }}>
       <Sidebar mobileOpen={mobileOpen} onToggle={handleDrawerToggle} />
+      <Navbar onMenuClick={handleDrawerToggle} />
     </Box>
   );
 }
